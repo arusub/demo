@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage("Clean"){
             steps{
-                deleteDir()
+                sh 'git clean -fdx'
             }
         }
         stage("Git Checkout"){
