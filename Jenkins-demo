@@ -1,0 +1,18 @@
+pipeline{
+    agent any
+    environment{
+        PATH = "$PATH:/opt/gradle6/bin:/opt/maven3/bin"
+    }
+    stages{
+        stage("Git Checkout"){
+            steps{
+                git credentialsId: 'github', url: 'https://github.com/arusub/demo'
+            }
+        }
+        stage("Maven Build"){
+            steps{
+                sh "maven clean build"
+            }
+        }
+    }
+}
