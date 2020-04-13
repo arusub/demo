@@ -24,9 +24,11 @@ pipeline{
 						ssh ec2-user@172.31.25.144 /opt/tomcat8/bin/shutdown.sh
 					
 						ssh ec2-user@172.31.25.144 /opt/tomcat8/bin/startup.sh
+
+						echo "mvn spring-boot:run" | at now + 1 minutes
 						"""
 						//sh 'nohup ./mvnw spring-boot:run -Dserver.port=8081 &'
-						echo "mvn spring-boot:run" | at now + 1 minutes
+
 				}
 			}
 		}
