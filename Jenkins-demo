@@ -4,6 +4,11 @@ pipeline{
         PATH = "$PATH:/opt/gradle6/bin:/opt/maven3/bin"
     }
     stages{
+        stage("Clean"){
+            steps{
+                deleteDir()
+            }
+        }
         stage("Git Checkout"){
             steps{
                 git credentialsId: 'github', url: 'https://github.com/arusub/demo'
