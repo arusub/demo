@@ -10,7 +10,7 @@ import javax.xml.ws.Response;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping
 public class UserController {
     @Autowired
     UserService userService;
