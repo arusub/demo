@@ -1,3 +1,4 @@
+currentBuild.displayName="Jenkins-demo-#"+currentBuild.number
 pipeline{
     agent any
 
