@@ -6,7 +6,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
 public class DemoApplication extends SpringBootServletInitializer {
-
+	//Added servlet init
 	public static void main(String[] args) {
 
 		SpringApplication.run(DemoApplication.class, args);
