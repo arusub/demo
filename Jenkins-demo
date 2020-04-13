@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage("Clean"){
             steps{
-                bat label: '', script: 'git clean -fdx'
+                sh 'git clean -fdx'
             }
         }
         stage("Git Checkout"){
