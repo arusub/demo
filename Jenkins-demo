@@ -1,25 +1,12 @@
 pipeline{
     agent any
-    /*environment{
-        PATH = "$PATH:/opt/gradle6/bin:/opt/maven3/bin"
-    }*/
+
     stages{
-    /*    stage("Clean"){
-            steps{
-                bat label: '', script: 'git clean -fdx'
-            }
-        }
         stage("Git Checkout"){
             steps{
                 git credentialsId: 'github', url: 'https://github.com/arusub/demo'
             }
         }
-        stage("Maven Build"){
-            steps{
-                bat label: '', script: 'mvn clean package -Dmaven.test.skip=true'
-				/* sh "mv target/*war target/myweb.war" */
-            }
-        }*/
 		stage("Deploy Devt"){
 		    steps{
 				sshagent(['tomcat-new']) {
@@ -32,8 +19,6 @@ pipeline{
 
 						echo "mvn spring-boot:run" | at now + 1 minutes
 						"""
-						//sh 'nohup ./mvnw spring-boot:run -Dserver.port=8081 &'
-
 				}
 			}
 		}
