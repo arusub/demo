@@ -1,12 +1,12 @@
 pipeline{
     agent any
-    environment{
+    /*environment{
         PATH = "$PATH:/opt/gradle6/bin:/opt/maven3/bin"
-    }
+    }*/
     stages{
         stage("Clean"){
             steps{
-                sh 'git clean -fdx'
+                bat label: '', script: 'git clean -fdx'
             }
         }
         stage("Git Checkout"){
@@ -16,14 +16,14 @@ pipeline{
         }
         stage("Maven Build"){
             steps{
-                sh "mvn clean package -Dmaven.test.skip=true"
+                bat label: '', script: 'mvn clean package -Dmaven.test.skip=true'
 				/* sh "mv target/*war target/myweb.war" */
             }
         }
 		stage("Deploy Devt"){
 		    steps{
 				sshagent(['tomcat-new']) {
-					sh """
+					bat label: '', script: """
 						scp -o StrictHostKeyChecking=no target/myweb.war ec2-user@172.31.25.144:/opt/tomcat8/webapps/
 
 						ssh ec2-user@172.31.25.144 /opt/tomcat8/bin/shutdown.sh
