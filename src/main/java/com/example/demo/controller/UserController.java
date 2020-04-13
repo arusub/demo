@@ -19,21 +19,23 @@ public class UserController {
     public String get(@RequestParam(value = "name") String name){
         return "Welcome "+name+"!";
     }
-    @PostMapping
+
+    @PostMapping("/user")
     public void addUpdateUser(@RequestBody User user){
         userService.addUser(user);
     }
-    @PutMapping
+
+    @PutMapping("/user")
     public void updateUser(@RequestBody User user){
         userService.updateUser(user);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/user")
     public void deleteUser(@RequestParam Long id){
         userService.deleteUser(id);
     }
 
-    @GetMapping
+    @GetMapping("/user")
     public ResponseEntity<Object> getUser(@RequestParam Long id){
         Optional<User> user = userService.getUser(id);
        if(user.isPresent()){
